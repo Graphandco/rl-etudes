@@ -5,9 +5,9 @@ services:
          context: .
          dockerfile: Dockerfile
          args:
-            NEXT_PUBLIC_WP_GRAPHQL: ${NEXT_PUBLIC_WP_GRAPHQL}
-            NEXT_PUBLIC_WP_REST: ${NEXT_PUBLIC_WP_REST}
-            REVALIDATE_TIME: ${REVALIDATE_TIME:-300}
+            # NEXT_PUBLIC_WP_GRAPHQL: ${NEXT_PUBLIC_WP_GRAPHQL}
+            # NEXT_PUBLIC_WP_REST: ${NEXT_PUBLIC_WP_REST}
+            # REVALIDATE_TIME: ${REVALIDATE_TIME:-300}
       restart: unless-stopped
       ports:
          - "3007:3007"

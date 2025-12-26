@@ -1,10 +1,26 @@
 @import "tailwindcss";
 
 :root {
-   --background: #ffffff;
-   --foreground: #171717;
-   --primary: #0000ac;
-   --accent: #ffbe00;
+   --background: oklch(100% 0 0);
+   --foreground: oklch(15% 0 0);
+
+   /* Sources canoniques */
+   --primary: oklch(45% 0.18 260);
+   --accent: oklch(80% 0.18 85);
+
+   /* Primary scale */
+   --primary-50: oklch(95% 0.03 260);
+   --primary-100: oklch(85% 0.06 260);
+   --primary-300: oklch(65% 0.12 260);
+   --primary-500: var(--primary);
+   --primary-700: oklch(35% 0.18 260);
+   --primary-900: oklch(20% 0.16 260);
+
+   /* Accent scale */
+   --accent-100: oklch(90% 0.1 85);
+   --accent-300: oklch(80% 0.14 85);
+   --accent-500: var(--accent);
+   --accent-700: oklch(60% 0.16 85);
 }
 
 @theme inline {
@@ -12,8 +28,21 @@
    --color-foreground: var(--foreground);
    --font-sans: var(--font-geist-sans);
    --font-mono: var(--font-geist-mono);
+   /* Primary */
    --color-primary: var(--primary);
+   --color-primary-50: var(--primary-50);
+   --color-primary-100: var(--primary-100);
+   --color-primary-300: var(--primary-300);
+   --color-primary-500: var(--primary-500);
+   --color-primary-700: var(--primary-700);
+   --color-primary-900: var(--primary-900);
+
+   /* Accent */
    --color-accent: var(--accent);
+   --color-accent-100: var(--accent-100);
+   --color-accent-300: var(--accent-300);
+   --color-accent-500: var(--accent-500);
+   --color-accent-700: var(--accent-700);
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -24,7 +53,7 @@
 } */
 @layer base {
    body {
-      background: var(--background);
+      background: var(--primary-50);
       color: var(--foreground);
       font-family: Arial, Helvetica, sans-serif;
    }
