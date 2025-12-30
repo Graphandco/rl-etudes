@@ -1,13 +1,15 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Noto_Sans, Epilogue } from "next/font/google";
 import "./globals.css";
 import Topbar from "@/components/header/Topbar";
-const geistSans = Geist({
-   variable: "--font-geist-sans",
+import NavBar from "@/components/header/NavBar";
+
+const notoSans = Noto_Sans({
+   variable: "--font-noto-sans",
    subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-   variable: "--font-geist-mono",
+const epilogue = Epilogue({
+   variable: "--font-epilogue",
    subsets: ["latin"],
 });
 
@@ -20,9 +22,12 @@ export default function RootLayout({ children }) {
    return (
       <html lang="fr">
          <body
-            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+            className={`${notoSans.variable} ${epilogue.variable} antialiased`}
          >
-            <Topbar />
+            <header>
+               <Topbar />
+               <NavBar />
+            </header>
             {children}
          </body>
       </html>

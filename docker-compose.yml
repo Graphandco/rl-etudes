@@ -4,7 +4,7 @@ services:
       build:
          context: .
          dockerfile: Dockerfile
-         args:
+         # args:
             # NEXT_PUBLIC_WP_GRAPHQL: ${NEXT_PUBLIC_WP_GRAPHQL}
             # NEXT_PUBLIC_WP_REST: ${NEXT_PUBLIC_WP_REST}
             # REVALIDATE_TIME: ${REVALIDATE_TIME:-300}

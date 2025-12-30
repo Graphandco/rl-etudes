@@ -86,8 +86,8 @@ export default function TextAppear({
                case "slideUp":
                default:
                   return {
-                     from: { y: "100%" },
-                     to: { y: "0%" },
+                     from: { opacity: 0, filter: "blur(5px)" },
+                     to: { opacity: 1, filter: "blur(0px)" },
                   };
             }
          };
