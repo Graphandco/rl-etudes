@@ -3,7 +3,7 @@ import { Phone, MapPin } from "lucide-react";
 export default function Topbar() {
    return (
       <div className="bg-black text-white">
-         <div className="wrapper py-2 flex flex-col sm:flex-row sm:gap-4 sm:items-center ">
+         <div className="wrapper py-2 flex flex-col sm:flex-row sm:gap-4 sm:items-center text-sm sm:text-base">
             <Link
                href="tel:0389454436"
                className="flex items-center gap-1 cursor-pointer hover:text-accent"
