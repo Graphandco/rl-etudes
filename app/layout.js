@@ -23,6 +23,7 @@ export default function RootLayout({ children }) {
       <html lang="fr">
          <body
             className={`${notoSans.variable} ${epilogue.variable} antialiased`}
+            suppressHydrationWarning={true}
          >
             <header>
                <Topbar />

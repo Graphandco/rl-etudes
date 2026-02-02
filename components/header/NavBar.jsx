@@ -13,7 +13,9 @@ export default function NavBar({ links = [] }) {
 
    const defaultLinks = [
       { href: "/", label: "Accueil" },
-      { href: "/", label: "About" },
+      { href: "/presentation", label: "Présentation" },
+      { href: "/bureau-detudes", label: "Bureau d'études" },
+      { href: "/topographie", label: "Topographie" },
       { href: "/contact", label: "Contact" },
    ];
 
@@ -37,7 +39,7 @@ export default function NavBar({ links = [] }) {
                            className={`transition-colors ${
                               isActive
                                  ? "text-primary font-semibold"
-                                 : "hover:text-primary"
+                                 : "hover:text-primary font-semibold"
                            }`}
                         >
                            {link.label}

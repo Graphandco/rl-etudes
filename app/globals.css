@@ -25,7 +25,7 @@
 
    /* Colors - Base */
    --color-background: oklch(1 0 0);
-   --color-foreground: oklch(0.145 0 0);
+   --color-foreground: oklch(0.38 0.06 262.5);
    --color-card: oklch(1 0 0);
    --color-card-foreground: oklch(0.145 0 0);
    --color-popover: oklch(1 0 0);
