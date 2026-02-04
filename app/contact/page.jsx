@@ -1,10 +1,10 @@
-import Hero from "@/components/Hero";
-export default function Contact() {
+import { getWordpressContent } from "@/actions/getWordpressContent";
+import ContactHero from "@/components/contact/ContactHero";
+export default async function Contact() {
+   const pageData = await getWordpressContent({ id: 30, type: "page" });
    return (
       <div>
-         <Hero image="/contact/hero.webp">
-            <h1>Contact</h1>
-         </Hero>
+         <ContactHero pageData={pageData} />
       </div>
    );
 }

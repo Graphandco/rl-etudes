@@ -1,7 +1,10 @@
-export default function BureauDetudes() {
+import { getWordpressContent } from "@/actions/getWordpressContent";
+export default async function BureauDetudes() {
+   const pageData = await getWordpressContent({ id: 26, type: "page" });
+
    return (
       <div>
-         <h1>Bureau d'études</h1>
+         <PresentationHero pageData={pageData} />
       </div>
    );
 }

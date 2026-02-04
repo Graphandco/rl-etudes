@@ -76,6 +76,15 @@
       @apply bg-background text-foreground font-text;
    }
 
+   .title-h2 {
+      @apply text-primary font-bold;
+      font-size: clamp(2rem, 1.5rem + 0.5vw, 2.5rem);
+      line-height: 1;
+   }
+   .title-h3 {
+      @apply text-xl text-accent font-semibold leading-tight;
+   }
+
    .wrapper {
       max-width: 1280px;
       padding-inline: 5vw;

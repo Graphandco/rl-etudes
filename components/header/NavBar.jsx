@@ -25,7 +25,13 @@ export default function NavBar({ links = [] }) {
       <>
          <nav className="wrapper py-2 flex justify-between items-center">
             <Link href="/">
-               <Image src="/logo.webp" alt="Logo" width={120} height={120} />
+               <Image
+                  src="/logo.webp"
+                  alt="Logo"
+                  width={598}
+                  height={247}
+                  className="w-30 h-auto"
+               />
             </Link>
 
             {/* Menu Desktop */}

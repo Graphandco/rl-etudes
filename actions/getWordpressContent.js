@@ -25,12 +25,22 @@ export async function getWordpressContent({ id, type = "page" }) {
       );
    }
 
-   // 1️⃣ GraphQL pour récupérer les champs de base (title, content, seo)
+   // 1️⃣ GraphQL pour récupérer les champs de base (title, content, seo, featuredImage)
    const graphqlQuery = `
     query GetContent($id: ID!) {
       ${type}(id: $id, idType: DATABASE_ID) {
         title
         content(format: RENDERED)
+        featuredImage {
+          node {
+            sourceUrl
+            altText
+            mediaDetails {
+              width
+              height
+            }
+          }
+        }
         seo: seo {
           title
           metaDesc
@@ -71,6 +81,16 @@ export async function getWordpressContent({ id, type = "page" }) {
       title: graphQLContent.title,
       content: graphQLContent.content,
       seo: graphQLContent.seo,
+      featuredImage: graphQLContent.featuredImage?.node
+         ? {
+              url: graphQLContent.featuredImage.node.sourceUrl,
+              alt: graphQLContent.featuredImage.node.altText || "",
+              width:
+                 graphQLContent.featuredImage.node.mediaDetails?.width || null,
+              height:
+                 graphQLContent.featuredImage.node.mediaDetails?.height || null,
+           }
+         : null,
       // Fusionne tous les champs ACF directement dans l'objet retourné
       ...acfFields,
       // Garde aussi une référence à tous les champs ACF dans 'acf' pour référence
