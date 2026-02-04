@@ -3,8 +3,6 @@ import YellowShape from "@/components/ui/YellowShape";
 import BlockAppear from "@/components/ui/BlockAppear";
 export default function HomePrestations({ pageData }) {
    const prestations = pageData.prestations;
-   console.log(prestations);
-
    return (
       <section className="relative">
          <YellowShape bottom right />

@@ -10,7 +10,7 @@ export default async function Home() {
          <HomeHero pageData={pageData} />
          <HomePrestations pageData={pageData} />
          <HomeBandeau pageData={pageData} />
-         <HomeStats />
+         <HomeStats stats={pageData.stats} />
       </>
    );
 }
