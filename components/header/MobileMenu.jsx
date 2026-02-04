@@ -144,9 +144,9 @@ export default function MobileMenu({ links, isOpen, onClose }) {
                         <Image
                            src="/logo.webp"
                            alt="Logo"
-                           width={120}
-                           height={120}
-                           className="mx-auto"
+                           width={598}
+                           height={247}
+                           className="w-32 h-auto mx-auto"
                         />
                      </Link>
                   </div>

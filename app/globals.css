@@ -72,8 +72,14 @@
       @apply border-border outline-ring/50;
    }
 
+   html {
+      /* @apply overflow-x-hidden; */
+      max-width: 100vw;
+   }
+
    body {
-      @apply bg-background text-foreground font-text;
+      @apply bg-background text-foreground font-text overflow-x-hidden;
+      max-width: 100vw;
    }
 
    .title-h2 {
