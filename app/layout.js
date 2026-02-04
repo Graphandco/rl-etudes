@@ -2,7 +2,7 @@ import { Noto_Sans, Epilogue } from "next/font/google";
 import "./globals.css";
 import Topbar from "@/components/header/Topbar";
 import NavBar from "@/components/header/NavBar";
-
+import FooterWrapper from "@/components/footer/FooterWrapper";
 const notoSans = Noto_Sans({
    variable: "--font-noto-sans",
    subsets: ["latin"],
@@ -30,6 +30,7 @@ export default function RootLayout({ children }) {
                <NavBar />
             </header>
             {children}
+            <FooterWrapper />
          </body>
       </html>
    );

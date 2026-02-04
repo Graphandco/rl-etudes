@@ -101,7 +101,7 @@ export default function BlockAppear({
                ...animationProps,
                scrollTrigger: {
                   trigger: containerRef.current,
-                  start: "top 90%",
+                  start: "top 80%",
                   once: true,
                },
             });

@@ -10,6 +10,7 @@ export default function HomeHero({ pageData }) {
    return (
       <Hero image={pageData.featuredImage} alt={pageData.title}>
          <BlockAppear delay={0.3}>
+            <h3 className="title-h3 mb-2 text-center">RL Études</h3>
             <h1 className="text-4xl font-title font-bold text-primary">
                {pageData.title}
             </h1>
