@@ -1,5 +1,5 @@
 import Hero from "@/components/Hero";
-import BlockAppear from "@/components/BlockAppear";
+import BlockAppear from "@/components/ui/BlockAppear";
 export default function PresentationHero({ pageData }) {
    return (
       <>

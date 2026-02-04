@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import Hero from "@/components/Hero";
 import { ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
-import BlockAppear from "@/components/BlockAppear";
+import BlockAppear from "@/components/ui/BlockAppear";
 import Link from "next/link";
 
 export default function HomeHero({ pageData }) {
