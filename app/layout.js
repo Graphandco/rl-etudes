@@ -1,5 +1,6 @@
 import { Noto_Sans, Epilogue } from "next/font/google";
 import "./globals.css";
+import { ViewTransitions } from "next-view-transitions";
 import Topbar from "@/components/header/Topbar";
 import NavBar from "@/components/header/NavBar";
 import FooterWrapper from "@/components/footer/FooterWrapper";
@@ -20,18 +21,20 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
    return (
-      <html lang="fr">
-         <body
-            className={`${notoSans.variable} ${epilogue.variable} antialiased`}
-            suppressHydrationWarning={true}
-         >
-            <header>
-               <Topbar />
-               <NavBar />
-            </header>
-            {children}
-            <FooterWrapper />
-         </body>
-      </html>
+      <ViewTransitions>
+         <html lang="fr">
+            <body
+               className={`${notoSans.variable} ${epilogue.variable} antialiased`}
+               suppressHydrationWarning={true}
+            >
+               <header>
+                  <Topbar />
+                  <NavBar />
+               </header>
+               {children}
+               <FooterWrapper />
+            </body>
+         </html>
+      </ViewTransitions>
    );
 }
