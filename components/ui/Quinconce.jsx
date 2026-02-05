@@ -41,7 +41,7 @@ export default function Quinconce({
                   opacity: 1,
                   y: 0,
                   duration: 1,
-                  ease: "power2.out",
+                  ease: "ease",
                }),
                once: true,
             });
@@ -90,8 +90,11 @@ export default function Quinconce({
       >
          <Image src={image} alt={title} width={500} height={500} />
          <div className="space-y-4">
-            <h3 className="text-2xl font-bold">{title}</h3>
-            <p className="text-sm">{content}</p>
+            <h2 className="title-h2">{title}</h2>
+            <div
+               dangerouslySetInnerHTML={{ __html: content }}
+               className="prose"
+            />
          </div>
       </div>
    );

@@ -9,14 +9,14 @@ export default async function Presentation() {
          <Quinconce
             left
             image="/contact/contact.webp"
-            title="Titre test"
-            content="Contenu test"
+            title={pageData.expertise_technique.title}
+            content={pageData.expertise_technique.content}
          />
          <Quinconce
             right
             image="/contact/contact.webp"
-            title="Titre test"
-            content="Contenu test"
+            title={pageData.competences_certifiees.title}
+            content={pageData.competences_certifiees.content}
          />
       </div>
    );
