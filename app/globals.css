@@ -162,9 +162,45 @@
    }
 }
 
-::view-transition-old(root),
-::view-transition-new(root) {
+/* View Transitions - Animations plus visibles pour tester */
+@keyframes fade-in {
+   from {
+      opacity: 0;
+      transform: translateY(20px);
+   }
+   to {
+      opacity: 1;
+      transform: translateY(0);
+   }
+}
+
+@keyframes fade-out {
+   from {
+      opacity: 1;
+      transform: translateY(0);
+   }
+   to {
+      opacity: 0;
+      transform: translateY(-20px);
+   }
+}
+
+/* Exclure header et footer des transitions */
+::view-transition-old(header),
+::view-transition-new(header),
+::view-transition-old(footer),
+::view-transition-new(footer) {
    animation: none !important;
+}
+
+::view-transition-old(root) {
+   animation: fade-out 0.5s ease-in-out;
+   z-index: 1;
+}
+
+::view-transition-new(root) {
+   animation: fade-in 0.5s ease-in-out;
+   z-index: 10000;
 }
 
 ::view-transition-group(root) {
@@ -175,14 +211,4 @@
    isolation: isolate;
    will-change: transform, opacity, clip-path;
    z-index: 1;
-}
-
-::view-transition-new(root) {
-   z-index: 10000;
-   animation: none !important;
-}
-
-::view-transition-old(root) {
-   z-index: 1;
-   animation: none !important;
 }

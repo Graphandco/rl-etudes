@@ -3,7 +3,7 @@ import Hero from "@/components/Hero";
 import { ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
 import BlockAppear from "@/components/ui/BlockAppear";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 
 export default function HomeHero({ pageData }) {
    const hero = pageData.hero;

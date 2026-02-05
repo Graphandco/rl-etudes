@@ -21,20 +21,20 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
    return (
-      <ViewTransitions>
-         <html lang="fr">
-            <body
-               className={`${notoSans.variable} ${epilogue.variable} antialiased`}
-               suppressHydrationWarning={true}
-            >
-               <header>
+      <html lang="fr">
+         <body
+            className={`${notoSans.variable} ${epilogue.variable} antialiased`}
+            suppressHydrationWarning={true}
+         >
+            <ViewTransitions>
+               <header style={{ viewTransitionName: "header" }}>
                   <Topbar />
                   <NavBar />
                </header>
                {children}
-               <FooterWrapper />
-            </body>
-         </html>
-      </ViewTransitions>
+               <FooterWrapper style={{ viewTransitionName: "footer" }} />
+            </ViewTransitions>
+         </body>
+      </html>
    );
 }

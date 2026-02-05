@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { Button } from "@/components/ui/button";
 import { MailIcon } from "lucide-react";
 export default function HomeBandeau({ pageData }) {
