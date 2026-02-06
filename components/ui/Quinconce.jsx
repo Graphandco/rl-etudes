@@ -79,7 +79,7 @@ export default function Quinconce({
    );
 
    return (
-      <div
+      <section
          ref={containerRef}
          className={cn(
             "wrapper mt-10 mb-10 flex flex-col md:items-end gap-10 overflow-hidden",
@@ -96,6 +96,6 @@ export default function Quinconce({
                className="prose"
             />
          </div>
-      </div>
+      </section>
    );
 }

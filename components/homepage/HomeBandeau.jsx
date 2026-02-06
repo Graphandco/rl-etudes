@@ -1,6 +1,7 @@
 import { Link } from "next-view-transitions";
 import { Button } from "@/components/ui/button";
 import { MailIcon } from "lucide-react";
+import AppearFromBottom from "@/components/ui/AppearFromBottom";
 export default function HomeBandeau({ pageData }) {
    const bandeau = pageData.bandeau;
    return (
@@ -15,12 +16,14 @@ export default function HomeBandeau({ pageData }) {
             <h3 className="text-3xl md:text-4xl lg:text-5xl text-accent font-semibold mb-5">
                {bandeau.titre}
             </h3>
-            <Link href="/contact">
-               <Button size="lg">
-                  <span>Contactez-nous</span>
-                  <MailIcon className="w-4 h-4" />
-               </Button>
-            </Link>
+            <AppearFromBottom>
+               <Link href="/contact">
+                  <Button size="lg">
+                     <span>Contactez-nous</span>
+                     <MailIcon className="w-4 h-4" />
+                  </Button>
+               </Link>
+            </AppearFromBottom>
          </div>
       </section>
    );

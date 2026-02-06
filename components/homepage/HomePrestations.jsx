@@ -1,17 +1,20 @@
 import Image from "next/image";
 import YellowShape from "@/components/ui/YellowShape";
 import BlockAppear from "@/components/ui/BlockAppear";
+import AppearFromBottom from "@/components/ui/AppearFromBottom";
 export default function HomePrestations({ pageData }) {
    const prestations = pageData.prestations;
    return (
-      <section className="relative">
+      <section className="relative to-scroll">
          <YellowShape bottom right />
          <div className="wrapper py-5 sm:py-10 md:py-16">
             <div className="text-center max-w-lg mx-auto">
                <h3 className="title-h3 mb-2">{prestations.sous_titre}</h3>
-               <h2 className="title-h2">{prestations.titre}</h2>
+               <AppearFromBottom>
+                  <h2 className="title-h2">{prestations.titre}</h2>
+               </AppearFromBottom>
             </div>
-            <BlockAppear className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-10">
+            <BlockAppear className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 mt-16">
                {prestations.cartes.map((prestation) => (
                   <div
                      key={prestation.titre}

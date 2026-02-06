@@ -98,50 +98,50 @@ export async function getWordpressContent({ id, type = "page" }) {
    };
 }
 
-/**
- * Récupère les coordonnées depuis les options ACF WordPress via GraphQL
- * @returns {Promise<{adresse: string, telephone: string, email: string}>}
- */
-export async function getWordpressCoordonnees() {
-   if (!GRAPHQL_BASE_URL) {
-      throw new Error(
-         "La variable d'environnement NEXT_PUBLIC_WP_GRAPHQL n'est pas définie"
-      );
-   }
+// /**
+//  * Récupère les coordonnées depuis les options ACF WordPress via GraphQL
+//  * @returns {Promise<{adresse: string, telephone: string, email: string}>}
+//  */
+// export async function getWordpressCoordonnees() {
+//    if (!GRAPHQL_BASE_URL) {
+//       throw new Error(
+//          "La variable d'environnement NEXT_PUBLIC_WP_GRAPHQL n'est pas définie"
+//       );
+//    }
 
-   // Requête GraphQL pour récupérer les options ACF coordonnees
-   const graphqlQuery = `
-    query GetCoordonnees {
-      coordonnees {
-        coordonnes {
-          adresse
-          email
-          telephone
-        }
-      }
-    }
-  `;
+//    // Requête GraphQL pour récupérer les options ACF coordonnees
+//    const graphqlQuery = `
+//     query GetCoordonnees {
+//       coordonnees {
+//         coordonnes {
+//           adresse
+//           email
+//           telephone
+//         }
+//       }
+//     }
+//   `;
 
-   const graphqlRes = await fetch(GRAPHQL_BASE_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ query: graphqlQuery }),
-      next: { revalidate: REVALIDATE_TIME },
-   });
+//    const graphqlRes = await fetch(GRAPHQL_BASE_URL, {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify({ query: graphqlQuery }),
+//       next: { revalidate: REVALIDATE_TIME },
+//    });
 
-   if (!graphqlRes.ok) {
-      throw new Error("Erreur lors de la requête GraphQL pour les coordonnées");
-   }
+//    if (!graphqlRes.ok) {
+//       throw new Error("Erreur lors de la requête GraphQL pour les coordonnées");
+//    }
 
-   const { data } = await graphqlRes.json();
+//    const { data } = await graphqlRes.json();
 
-   if (!data?.coordonnees?.coordonnes) {
-      throw new Error("Les options ACF coordonnees n'ont pas été trouvées");
-   }
+//    if (!data?.coordonnees?.coordonnes) {
+//       throw new Error("Les options ACF coordonnees n'ont pas été trouvées");
+//    }
 
-   return {
-      adresse: data.coordonnees.coordonnes.adresse || "",
-      telephone: data.coordonnees.coordonnes.telephone || "",
-      email: data.coordonnees.coordonnes.email || "",
-   };
-}
+//    return {
+//       adresse: data.coordonnees.coordonnes.adresse || "",
+//       telephone: data.coordonnees.coordonnes.telephone || "",
+//       email: data.coordonnees.coordonnes.email || "",
+//    };
+// }

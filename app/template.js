@@ -5,7 +5,7 @@ import { ReactLenis, useLenis } from "lenis/react";
 export default function Template({ children }) {
    const lenis = useLenis((lenis) => {
       // called every scroll
-      console.log(lenis);
+      // console.log(lenis);
    });
 
    return (
@@ -14,7 +14,7 @@ export default function Template({ children }) {
             root
             options={{
                lerp: 0.1,
-               duration: 2,
+               duration: 1,
                smoothTouch: true,
                touchMultiplier: 3,
                infinite: false,

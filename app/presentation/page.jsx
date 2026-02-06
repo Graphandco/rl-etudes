@@ -11,6 +11,7 @@ export default async function Presentation() {
             image="/contact/contact.webp"
             title={pageData.expertise_technique.title}
             content={pageData.expertise_technique.content}
+            className="to-scroll"
          />
          <Quinconce
             right

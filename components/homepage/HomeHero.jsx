@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import Hero from "@/components/Hero";
+import Hero from "@/components/ui/Hero";
 import { ArrowRightIcon } from "lucide-react";
 import Image from "next/image";
 import BlockAppear from "@/components/ui/BlockAppear";

@@ -3,8 +3,12 @@ import Image from "next/image";
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import useHeaderHeight from "@/hooks/useHeaderHeight";
 import { cn } from "@/lib/utils";
+import { Mouse } from "lucide-react";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero({
    image: { url, width, height },
@@ -16,6 +20,13 @@ export default function Hero({
    const headerHeight = useHeaderHeight();
    const heroHeight = `calc(100vh - ${headerHeight}px)`;
    const imageRef = useRef(null);
+
+   // const scrollToSection = () => {
+   //    const section = document.document.querySelector(".to-scroll");
+   //    if (section) {
+   //       section.scrollIntoView({ behavior: "smooth" });
+   //    }
+   // };
 
    useGSAP(
       () => {
@@ -64,6 +75,11 @@ export default function Hero({
                height={height}
             />
          </div>
+         {/* <Mouse
+            size={32}
+            className="absolute bottom-5 left-1/2 -translate-x-1/2 cursor-pointer"
+            // onClick={scrollToSection}
+         /> */}
       </section>
    );
 }
