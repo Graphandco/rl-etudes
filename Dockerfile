@@ -39,7 +39,7 @@ COPY --from=builder /app/public ./public
 COPY --from=builder /app/next.config.* ./
 
 ENV NODE_ENV=production
-ENV PORT=3005
+ENV PORT=3007
 ENV HOSTNAME=0.0.0.0
 
 # Donner les droits au user non-root
