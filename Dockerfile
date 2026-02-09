@@ -3,15 +3,15 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# # Arguments de build pour les variables d'environnement
-# ARG NEXT_PUBLIC_WP_GRAPHQL
-# ARG NEXT_PUBLIC_WP_REST
-# ARG REVALIDATE_TIME
+# Arguments de build pour les variables d'environnement
+ARG NEXT_PUBLIC_WP_GRAPHQL
+ARG NEXT_PUBLIC_WP_REST
+ARG REVALIDATE_TIME
 
-# # Convertir les ARG en ENV pour qu'elles soient disponibles au build Next.js
-# ENV NEXT_PUBLIC_WP_GRAPHQL=$NEXT_PUBLIC_WP_GRAPHQL
-# ENV NEXT_PUBLIC_WP_REST=$NEXT_PUBLIC_WP_REST
-# ENV REVALIDATE_TIME=$REVALIDATE_TIME
+# Convertir les ARG en ENV pour qu'elles soient disponibles au build Next.js
+ENV NEXT_PUBLIC_WP_GRAPHQL=$NEXT_PUBLIC_WP_GRAPHQL
+ENV NEXT_PUBLIC_WP_REST=$NEXT_PUBLIC_WP_REST
+ENV REVALIDATE_TIME=$REVALIDATE_TIME
 
 # Copier uniquement les fichiers de dépendances d'abord (cache Docker)
 COPY package*.json ./
