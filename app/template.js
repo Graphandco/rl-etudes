@@ -14,11 +14,11 @@ export default function Template({ children }) {
             root
             options={{
                lerp: 0.1,
-               duration: 1,
+               duration: 2,
                smoothTouch: true,
                touchMultiplier: 3,
                infinite: false,
-               wheelMultiplier: 0.8,
+               wheelMultiplier: 0.5,
                orientation: "vertical",
                smoothWheel: true,
                syncTouch: true,

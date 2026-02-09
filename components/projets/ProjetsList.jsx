@@ -10,8 +10,6 @@ export default function ProjetsList({ projets }) {
       );
    }
 
-   console.log(projets);
-
    return (
       <section className="wrapper py-14">
          <h1 className="title-h2 mb-10">Nos Projets</h1>

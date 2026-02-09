@@ -70,7 +70,12 @@ export async function getWordpressProjet({ id, slug }) {
 
    if (!graphqlRes.ok) throw new Error("Erreur lors de la requête GraphQL");
 
-   const { data: graphqlData } = await graphqlRes.json();
+   const { data: graphqlData, errors: graphqlErrors } = await graphqlRes.json();
+
+   if (graphqlErrors) {
+      console.error("Erreurs GraphQL:", graphqlErrors);
+   }
+
    const graphQLContent = graphqlData?.projet;
 
    if (!graphQLContent) {
@@ -78,12 +83,44 @@ export async function getWordpressProjet({ id, slug }) {
    }
 
    // 2️⃣ REST pour récupérer les champs ACF
-   const projetId = graphQLContent.databaseId;
-   const restRes = await fetch(`${REST_BASE_URL}/projets/${projetId}`, {
+   // Utiliser databaseId (ID numérique) pour REST, pas l'ID GraphQL
+   const projetId = graphQLContent.databaseId || graphQLContent.id;
+
+   let acfFields = {};
+
+   // Essayer d'abord avec l'ID
+   let restRes = await fetch(`${REST_BASE_URL}/projets/${projetId}`, {
       next: { revalidate: REVALIDATE_TIME },
    });
 
-   const acfFields = restRes.ok ? (await restRes.json()).acf || {} : {};
+   // Si l'ID ne fonctionne pas, essayer avec le slug
+   if (!restRes.ok && graphQLContent.slug) {
+      restRes = await fetch(
+         `${REST_BASE_URL}/projets?slug=${graphQLContent.slug}`,
+         {
+            next: { revalidate: REVALIDATE_TIME },
+         }
+      );
+
+      if (restRes.ok) {
+         const restDataArray = await restRes.json();
+         if (restDataArray && restDataArray.length > 0) {
+            acfFields = restDataArray[0].acf || {};
+         }
+      }
+   } else if (restRes.ok) {
+      const restData = await restRes.json();
+      acfFields = restData.acf || {};
+   } else {
+      // Si REST échoue, on continue sans ACF plutôt que de faire échouer la requête
+      console.warn(
+         `Impossible de récupérer les champs ACF via REST (${
+            restRes.status
+         }) pour le projet ${
+            projetId || graphQLContent.slug
+         }. Les données de base seront retournées sans ACF.`
+      );
+   }
 
    // 3️⃣ Retourne un objet combiné
    return {
@@ -102,6 +139,7 @@ export async function getWordpressProjet({ id, slug }) {
                  graphQLContent.featuredImage.node.mediaDetails?.height || null,
            }
          : null,
+      // Fusionne tous les champs ACF
       ...acfFields,
       acf: acfFields,
    };
@@ -166,8 +204,10 @@ export async function getAllWordpressProjets() {
    const projetsWithACF = await Promise.all(
       projets.map(async (projet) => {
          try {
+            // Utiliser databaseId (ID numérique) pour REST, pas l'ID GraphQL
+            const projetId = projet.databaseId || projet.id;
             const restRes = await fetch(
-               `${REST_BASE_URL}/projets/${projet.databaseId}`,
+               `${REST_BASE_URL}/projets/${projetId}`,
                {
                   next: { revalidate: REVALIDATE_TIME },
                }
@@ -195,7 +235,10 @@ export async function getAllWordpressProjets() {
                };
             }
          } catch (error) {
-            // Ignorer les erreurs REST et retourner les données de base
+            console.error(
+               `Erreur lors de la récupération des ACF pour le projet ${projet.id}:`,
+               error
+            );
          }
 
          // Retourner les données de base si les ACF échouent

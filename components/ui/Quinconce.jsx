@@ -88,8 +88,14 @@ export default function Quinconce({
          )}
          {...props}
       >
-         <Image src={image} alt={title} width={500} height={500} />
-         <div className="space-y-4">
+         <Image
+            src={image.url}
+            alt={title}
+            width={image.width}
+            height={image.height}
+            className="w-full md:w-3/5 h-auto rounded-lg"
+         />
+         <div className="space-y-4 w-full md:w-2/5">
             <h2 className="title-h2">{title}</h2>
             <div
                dangerouslySetInnerHTML={{ __html: content }}

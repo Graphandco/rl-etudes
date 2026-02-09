@@ -72,9 +72,20 @@
       @apply border-border outline-ring/50;
    }
    body {
-      @apply bg-background text-foreground font-text overflow-x-hidden;
+      @apply bg-background text-foreground font-text overflow-x-hidden min-h-screen flex flex-col;
+   }
+   main {
+      flex-grow: 1;
+      position: relative;
+      z-index: 1;
+      background: white;
    }
 
+   .title-h1 {
+      @apply text-primary font-bold;
+      font-size: clamp(2.2rem, 1.5rem + 0.8vw, 2.7rem);
+      line-height: 1;
+   }
    .title-h2 {
       @apply text-primary font-bold;
       font-size: clamp(2rem, 1.5rem + 0.5vw, 2.5rem);
@@ -133,7 +144,11 @@
          color: black !important;
       }
       h2 {
+         font-weight: 600;
+         margin-top: 1rem;
          margin-bottom: 0.5rem !important;
+         color: var(--color-primary);
+         @apply text-2xl;
       }
       h3 {
          font-weight: 600;

@@ -3,7 +3,7 @@ import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
 import Topbar from "@/components/header/Topbar";
 import NavBar from "@/components/header/NavBar";
-import FooterWrapper from "@/components/footer/FooterWrapper";
+import Footer from "@/components/footer/Footer";
 const notoSans = Noto_Sans({
    variable: "--font-noto-sans",
    subsets: ["latin"],
@@ -27,12 +27,15 @@ export default function RootLayout({ children }) {
             suppressHydrationWarning={true}
          >
             <ViewTransitions>
-               <header style={{ viewTransitionName: "header" }}>
+               <header
+                  className="shadow-lg relative z-10"
+                  style={{ viewTransitionName: "header" }}
+               >
                   <Topbar />
                   <NavBar />
                </header>
-               {children}
-               <FooterWrapper style={{ viewTransitionName: "footer" }} />
+               <main style={{ viewTransitionName: "main" }}>{children}</main>
+               <Footer style={{ viewTransitionName: "footer" }} />
             </ViewTransitions>
          </body>
       </html>

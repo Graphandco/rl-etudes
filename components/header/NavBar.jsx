@@ -38,7 +38,9 @@ export default function NavBar({ links = [] }) {
             {/* Menu Desktop */}
             <ul className="hidden md:flex items-center gap-4">
                {menuLinks.map((link) => {
-                  const isActive = pathname === link.href;
+                  const isActive =
+                     pathname === link.href || // lien exact
+                     pathname.startsWith(link.href + "/"); // sous-routes
                   return (
                      <li key={link.label}>
                         <Link
