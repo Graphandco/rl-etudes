@@ -7,7 +7,11 @@ export default function BeHero({ pageData }) {
             <h1 className="text-4xl font-title font-bold text-primary">
                {pageData.title}
             </h1>
-            {/* <div className="mt-2 mb-5">{hero.description}</div> */}
+            <div className="mt-2 mb-5">
+               RL Études intervient principalement sur les réseaux de
+               distribution d’énergie, pour le compte de concessionnaires,
+               collectivités et acteurs publics.
+            </div>
          </BlockAppear>
       </Hero>
    );

@@ -27,7 +27,7 @@ export default function AppearFromBottom({ children, className, ...props }) {
             scrollTrigger: {
                trigger: containerRef.current,
                start: "bottom 100%", // Démarre quand le bas de l'élément est à 20% du bas de l'écran
-               end: "bottom 80%", // Se termine quand le bas de l'élément est à 20% du bas de l'écran
+               end: "bottom 60%", // Se termine quand le bas de l'élément est à 20% du bas de l'écran
                scrub: 1,
             },
          });
