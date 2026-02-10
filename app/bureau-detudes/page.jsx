@@ -8,6 +8,7 @@ export default async function BureauDetudes() {
       <div>
          <BeHero pageData={pageData} />
          <Reseaux reseaux={pageData.reseaux} />
+         <div className="min-h-screen"></div>
       </div>
    );
 }

@@ -1,12 +1,7 @@
 "use client";
 import Image from "next/image";
-import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
-
-gsap.registerPlugin(ScrollTrigger);
+import AppearFromSide from "@/components/ui/AppearFromSide";
 
 export default function Quinconce({
    image,
@@ -17,91 +12,33 @@ export default function Quinconce({
    className,
    ...props
 }) {
-   const containerRef = useRef(null);
    const isLeft = left || !right; // Par défaut left si aucune prop n'est fournie
 
-   useGSAP(
-      () => {
-         if (!containerRef.current) return;
-
-         // Vérifier si on est sur mobile (largeur < 768px)
-         const isMobile = window.innerWidth < 768;
-
-         if (isMobile) {
-            // Sur mobile : animation fade simple
-            gsap.set(containerRef.current, {
-               opacity: 0,
-               y: 30,
-            });
-
-            ScrollTrigger.create({
-               trigger: containerRef.current,
-               start: "top 80%",
-               animation: gsap.to(containerRef.current, {
-                  opacity: 1,
-                  y: 0,
-                  duration: 1,
-                  ease: "ease",
-               }),
-               once: true,
-            });
-         } else {
-            // Sur desktop : animation horizontale
-            const startX = isLeft ? "-100%" : "100%";
-
-            // Positionner le composant hors écran initialement
-            gsap.set(containerRef.current, {
-               x: startX,
-            });
-
-            // Créer une timeline pour l'animation
-            const tl = gsap.timeline({
-               scrollTrigger: {
-                  trigger: containerRef.current,
-                  start: "top bottom", // Commence dès que le conteneur devient visible
-                  end: "center center", // Se termine quand le conteneur est au centre de l'écran
-                  scrub: 1,
-               },
-            });
-
-            // Animer le composant de sa position hors écran vers sa position initiale
-            tl.to(containerRef.current, {
-               x: "0%",
-               duration: 1,
-               ease: "power2.out",
-            });
-         }
-      },
-      {
-         scope: containerRef,
-         dependencies: [left, right],
-      }
-   );
-
    return (
-      <section
-         ref={containerRef}
-         className={cn(
-            "wrapper mt-10 mb-10 flex flex-col md:items-end gap-10 overflow-hidden",
-            isLeft ? "md:flex-row" : "md:flex-row-reverse",
-            className
-         )}
-         {...props}
-      >
-         <Image
-            src={image.url}
-            alt={title}
-            width={image.width}
-            height={image.height}
-            className="w-full md:w-3/5 h-auto rounded-lg"
-         />
-         <div className="space-y-4 w-full md:w-2/5">
-            <h2 className="title-h2">{title}</h2>
-            <div
-               dangerouslySetInnerHTML={{ __html: content }}
-               className="prose"
+      <AppearFromSide left={left} right={right}>
+         <section
+            className={cn(
+               "wrapper mt-10 mb-10 flex flex-col md:items-end gap-10 overflow-hidden",
+               isLeft ? "md:flex-row" : "md:flex-row-reverse",
+               className
+            )}
+            {...props}
+         >
+            <Image
+               src={image.url}
+               alt={title}
+               width={image.width}
+               height={image.height}
+               className="w-full md:w-3/5 h-auto rounded-lg"
             />
-         </div>
-      </section>
+            <div className="space-y-4 w-full md:w-2/5">
+               <h2 className="title-h2">{title}</h2>
+               <div
+                  dangerouslySetInnerHTML={{ __html: content }}
+                  className="prose"
+               />
+            </div>
+         </section>
+      </AppearFromSide>
    );
 }
