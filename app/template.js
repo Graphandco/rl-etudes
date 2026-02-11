@@ -16,7 +16,7 @@ export default function Template({ children }) {
                lerp: 0.25,
                duration: 1.5,
                smoothTouch: true,
-               // touchMultiplier: 3,
+               touchMultiplier: 1,
                infinite: false,
                wheelMultiplier: 0.75,
                orientation: "vertical",
