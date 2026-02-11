@@ -13,10 +13,10 @@ export default function Template({ children }) {
          <ReactLenis
             root
             options={{
-               lerp: 0.1,
+               lerp: 0.25,
                duration: 1.5,
                smoothTouch: true,
-               touchMultiplier: 3,
+               // touchMultiplier: 3,
                infinite: false,
                wheelMultiplier: 0.75,
                orientation: "vertical",

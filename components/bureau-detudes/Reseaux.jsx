@@ -6,8 +6,12 @@ export default function Reseaux({ reseaux }) {
       <section id="reseaux" className="py-10 md:py-20 relative">
          <YellowShape bottom right className="z-10" />
          <div className="wrapper">
-            <h2 className="title-h2 mb-10">{reseaux.title}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-10 items-center">
+            <h2 className="title-h2 mb-5">{reseaux.title}</h2>
+            <p
+               dangerouslySetInnerHTML={{ __html: reseaux.description }}
+               className="max-w-3xl prose mb-10 lg:mb-16"
+            />
+            <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-10 lg:gap-16 items-center">
                <AppearFromSide left>
                   <Image
                      src={reseaux.image?.url}
@@ -17,29 +21,32 @@ export default function Reseaux({ reseaux }) {
                      className="w-full h-auto rounded-lg"
                   />
                </AppearFromSide>
-               {/* <AppearFromSide right> */}
-               <div className="grid grid-cols-2 gap-5">
-                  {reseaux.items.map((reseau) => (
-                     <div
-                        key={reseau.title}
-                        className="flex flex-col lg:flex-row items-center gap-2 lg:gap-5 bg-white border-2 border-primary p-5 rounded-lg shadow-md"
-                     >
-                        {reseau.picto.url && (
-                           <Image
-                              src={reseau.picto?.url}
-                              alt={reseau.title}
-                              width={reseau.picto?.width}
-                              height={reseau.picto?.height}
-                              className="w-auto h-10 object-contain"
-                           />
-                        )}
-                        <div className="text-center font-semibold leading-tight">
-                           {reseau.title}
+               <div>
+                  <h3 className="title-h3 text-primary font-bold mb-5">
+                     🔌 Réseaux pris en charge :
+                  </h3>
+                  <div className="grid grid-cols-2 gap-5">
+                     {reseaux.items.map((reseau) => (
+                        <div
+                           key={reseau.title}
+                           className="flex flex-col lg:flex-row items-center gap-2 lg:gap-5 bg-white border-2 border-primary p-5 rounded-lg shadow-md"
+                        >
+                           {reseau.picto.url && (
+                              <Image
+                                 src={reseau.picto?.url}
+                                 alt={reseau.title}
+                                 width={reseau.picto?.width}
+                                 height={reseau.picto?.height}
+                                 className="w-auto h-10 object-contain"
+                              />
+                           )}
+                           <div className="text-center font-semibold leading-tight">
+                              {reseau.title}
+                           </div>
                         </div>
-                     </div>
-                  ))}
+                     ))}
+                  </div>
                </div>
-               {/* </AppearFromSide> */}
             </div>
          </div>
       </section>
