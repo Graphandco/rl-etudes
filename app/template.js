@@ -15,13 +15,13 @@ export default function Template({ children }) {
             options={{
                lerp: 0.25,
                duration: 1.5,
-               smoothTouch: true,
-               touchMultiplier: 1,
                infinite: false,
                wheelMultiplier: 0.75,
                orientation: "vertical",
                smoothWheel: true,
                syncTouch: true,
+               // smoothTouch: true,
+               // touchMultiplier: 1,
             }}
          />
          {children}
