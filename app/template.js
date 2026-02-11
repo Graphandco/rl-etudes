@@ -19,9 +19,9 @@ export default function Template({ children }) {
                wheelMultiplier: 0.75,
                orientation: "vertical",
                smoothWheel: true,
-               syncTouch: true,
-               // smoothTouch: true,
-               // touchMultiplier: 1,
+               // Désactivé pour permettre le pull-to-refresh natif sur mobile
+               smoothTouch: false,
+               syncTouch: false,
             }}
          />
          {children}
