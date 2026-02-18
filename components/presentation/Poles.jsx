@@ -21,7 +21,7 @@ export default function Poles({ poles }) {
                            className="h-16 w-auto mx-auto"
                         />
                      </AppearFromBottom>
-                     <h3 className="text-lg text-center font-bold mt-10 mb-5">
+                     <h3 className="text-lg text-center font-bold my-5">
                         {pole.title}
                      </h3>
                      <div

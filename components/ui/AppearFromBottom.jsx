@@ -16,7 +16,7 @@ export default function AppearFromBottom({ children, className, ...props }) {
 
          // Positionner l'élément 50px plus bas initialement
          gsap.set(containerRef.current, {
-            y: 50,
+            y: 20,
          });
 
          // Animation avec ScrollTrigger
@@ -27,14 +27,14 @@ export default function AppearFromBottom({ children, className, ...props }) {
             scrollTrigger: {
                trigger: containerRef.current,
                start: "bottom 100%", // Démarre quand le bas de l'élément est à 20% du bas de l'écran
-               end: "bottom 60%", // Se termine quand le bas de l'élément est à 20% du bas de l'écran
+               end: "bottom 50%", // Se termine quand le bas de l'élément est à 20% du bas de l'écran
                scrub: 1,
             },
          });
       },
       {
          scope: containerRef,
-      }
+      },
    );
 
    return (

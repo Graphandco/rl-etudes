@@ -1,8 +1,7 @@
 import { Noto_Sans, Epilogue } from "next/font/google";
 import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
-import Topbar from "@/components/header/Topbar";
-import NavBar from "@/components/header/NavBar";
+import HeaderWrapper from "@/components/header/HeaderWrapper";
 import Footer from "@/components/footer/Footer";
 const notoSans = Noto_Sans({
    variable: "--font-noto-sans",
@@ -27,13 +26,7 @@ export default function RootLayout({ children }) {
             suppressHydrationWarning={true}
          >
             <ViewTransitions>
-               <header
-                  className="shadow-lg relative z-10"
-                  style={{ viewTransitionName: "header" }}
-               >
-                  <Topbar />
-                  <NavBar />
-               </header>
+               <HeaderWrapper />
                <main style={{ viewTransitionName: "main" }}>{children}</main>
                <Footer style={{ viewTransitionName: "footer" }} />
             </ViewTransitions>
