@@ -9,12 +9,31 @@ services:
             NEXT_PUBLIC_WP_REST: ${NEXT_PUBLIC_WP_REST}
             REVALIDATE_TIME: ${REVALIDATE_TIME:-300}
       restart: unless-stopped
-      ports:
-         - "3007:3007"
       env_file:
          - .env
       networks:
          - web-network
+
+      # Sécurité de base (Hardening)
+      cpus: 0.5
+      mem_limit: 512m
+      read_only: true
+      security_opt:
+         - no-new-privileges:true
+      tmpfs:
+         - /tmp:rw,noexec,nosuid,size=128m
+      volumes:
+         - next_cache:/app/.next/cache
+
+      # Logs maîtrisés
+      logging:
+         driver: "json-file"
+         options:
+            max-size: "10m"
+            max-file: "3"
+
+volumes:
+   next_cache:
 
 networks:
    web-network:
