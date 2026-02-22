@@ -13,6 +13,8 @@ services:
          - .env
       networks:
          - web-network
+      environment:
+         REDIS_HOST: redis
 
       # Sécurité de base (Hardening)
       cpus: 0.5
