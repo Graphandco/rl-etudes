@@ -8,12 +8,10 @@ export default function PresentationHero({ pageData }) {
                <h1 className="text-4xl font-title font-bold text-primary">
                   {pageData.title}
                </h1>
-               <div className="mt-2 mb-5">
-                  Fondée en 1989, la société RL Études est un bureau d’études
-                  indépendant spécialisé dans les réseaux de distribution
-                  d’énergie, la topographie, la détection de réseaux enterrés et
-                  la DAO.
-               </div>
+               <div
+                  className="mt-2 mb-5"
+                  dangerouslySetInnerHTML={{ __html: pageData.content }}
+               />
             </BlockAppear>
          </Hero>
       </>

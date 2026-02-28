@@ -7,7 +7,10 @@ export default function TopoHero({ pageData }) {
             <h1 className="text-4xl font-title font-bold text-primary">
                {pageData.title}
             </h1>
-            {/* <div className="mt-2 mb-5">{hero.description}</div> */}
+            <div
+               className="mt-2 mb-5"
+               dangerouslySetInnerHTML={{ __html: pageData.content }}
+            />
          </BlockAppear>
       </Hero>
    );

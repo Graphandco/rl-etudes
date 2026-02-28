@@ -7,7 +7,7 @@ export default function BePrestations({ prestations }) {
             <h2 className="title-h2 mb-5">Nos prestations</h2>
             {prestations.activites.map((prestation, index) => (
                <Quinconce
-                  key={prestation.index}
+                  key={index}
                   right={index % 2 === 0}
                   left={index % 2 === 1}
                   image={prestation.image}
