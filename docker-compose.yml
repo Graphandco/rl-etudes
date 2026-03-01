@@ -1,13 +1,14 @@
 services:
    app:
       container_name: rl-etudes
-      build:
-         context: .
-         dockerfile: Dockerfile
-         args:
-            NEXT_PUBLIC_WP_GRAPHQL: ${NEXT_PUBLIC_WP_GRAPHQL}
-            NEXT_PUBLIC_WP_REST: ${NEXT_PUBLIC_WP_REST}
-            REVALIDATE_TIME: ${REVALIDATE_TIME:-300}
+      # build:
+      #    context: .
+      #    dockerfile: Dockerfile
+      #    args:
+      #       NEXT_PUBLIC_WP_GRAPHQL: ${NEXT_PUBLIC_WP_GRAPHQL}
+      #       NEXT_PUBLIC_WP_REST: ${NEXT_PUBLIC_WP_REST}
+      #       REVALIDATE_TIME: ${REVALIDATE_TIME:-300}
+      image: ghcr.io/graphandco/rl-etudes:latest
       restart: unless-stopped
       env_file:
          - .env
