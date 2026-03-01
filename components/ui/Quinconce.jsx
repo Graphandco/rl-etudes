@@ -18,9 +18,9 @@ export default function Quinconce({
       <AppearFromSide left={left} right={right}>
          <section
             className={cn(
-               "wrapper mt-10 mb-10 flex flex-col md:items-end gap-10 overflow-hidden",
+               "wrapper my-10 md:my-20 flex flex-col md:items-end gap-10 overflow-hidden",
                isLeft ? "md:flex-row" : "md:flex-row-reverse",
-               className
+               className,
             )}
             {...props}
          >

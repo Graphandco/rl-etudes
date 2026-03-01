@@ -6,7 +6,7 @@ export default async function Topographie() {
    return (
       <div>
          <TopoHero pageData={pageData} />
-         <TopoPrestations />
+         <TopoPrestations prestations={pageData.prestations} />
       </div>
    );
 }
