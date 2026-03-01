@@ -4,7 +4,7 @@ export default function TopoPrestations({}) {
    return (
       <section id="bePrestations" className="py-10 md:py-20">
          <div className="wrapper">
-            <h2 className="title-h2 mb-5">Nos prestations</h2>
+            <h2 className="title-h2 mb-5">Découvrez nos prestations</h2>
             {/* {prestations.activites.map((prestation, index) => (
                <Quinconce
                   key={index}
