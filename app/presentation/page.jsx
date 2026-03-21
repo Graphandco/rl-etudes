@@ -6,19 +6,20 @@ import LastBlocks from "@/components/presentation/LastBlocks";
 import Partenaires from "@/components/presentation/Partenaires";
 export default async function Presentation() {
    const pageData = await getWordpressContent({ id: 23, type: "page" });
+   console.log(pageData);
    return (
       <div>
          <PresentationHero pageData={pageData} />
          <Quinconce
             left
-            image={pageData.expertise_technique.image}
+            images={pageData.expertise_technique.images}
             title={pageData.expertise_technique.title}
             content={pageData.expertise_technique.content}
             className="to-scroll"
          />
          <Quinconce
             right
-            image={pageData.competences_certifiees.image}
+            images={pageData.competences_certifiees.images}
             title={pageData.competences_certifiees.title}
             content={pageData.competences_certifiees.content}
          />
