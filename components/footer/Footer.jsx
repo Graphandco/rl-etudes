@@ -7,13 +7,12 @@ export default function Footer({}) {
             <div className="grid sm:grid-cols-3 gap-4 mb-6">
                <div className="space-y-1">
                   <Image
-                     src="/logo.webp"
+                     src="/logo_rle.webp"
                      alt="RL Etudes"
-                     width={598}
-                     height={247}
-                     className="w-32 h-auto"
+                     width={800}
+                     height={155}
+                     className="w-48 h-auto"
                   />
-                  <div className="text-xl uppercase text-accent">RL Études</div>
                </div>
                <div className="md:space-y-2 border-l border-accent pl-4">
                   <div className="text-xl font-semibold text-accent">
@@ -21,7 +20,7 @@ export default function Footer({}) {
                   </div>
                   <div>
                      <div>7 rue des Alpes</div>
-                     <div>68127 Niederentzen</div>
+                     <div>68127 NIEDERENTZEN</div>
                   </div>
                </div>
                <div className="md:space-y-2 border-l border-accent pl-4">
@@ -37,14 +36,14 @@ export default function Footer({}) {
                      </Link>
                      <Link
                         className="block hover:text-accent"
-                        href="mailto:contact@rl-etudes.fr"
+                        href="mailto:contact@rletudes.fr"
                      >
-                        contact@rl-etudes.fr
+                        contact@rletudes.fr
                      </Link>
                   </div>
                </div>
             </div>
-            <Link
+            {/* <Link
                href="https://www.facebook.com/pages/RL%20Etudes/113937037871272/#"
                target="_blank"
             >
@@ -55,7 +54,7 @@ export default function Footer({}) {
                >
                   <path d="M512 256C512 114.6 397.4 0 256 0S0 114.6 0 256C0 376 82.7 476.8 194.2 504.5l0-170.3-52.8 0 0-78.2 52.8 0 0-33.7c0-87.1 39.4-127.5 125-127.5 16.2 0 44.2 3.2 55.7 6.4l0 70.8c-6-.6-16.5-1-29.6-1-42 0-58.2 15.9-58.2 57.2l0 27.8 83.6 0-14.4 78.2-69.3 0 0 175.9C413.8 494.8 512 386.9 512 256z" />
                </svg>
-            </Link>
+            </Link> */}
 
             <div className="flex flex-wrap gap-x-2 justify-center md:justify-end items-center text-sm transition-colors">
                <Link className="hover:text-accent" href="/mentions-legales">

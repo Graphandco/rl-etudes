@@ -16,7 +16,14 @@
    --color-primary-foreground: oklch(0.985 0 0);
 
    /* Colors - Accent */
-   --color-accent: oklch(80% 0.18 85);
+   /* --color-accent: oklch(80% 0.18 85);
+   --color-accent-100: oklch(90% 0.1 85);
+   --color-accent-300: oklch(80% 0.14 85);
+   --color-accent-500: var(--color-accent);
+   --color-accent-700: oklch(60% 0.16 85);
+   --color-accent-foreground: oklch(0.205 0 0); */
+   /* Colors - Accent */
+   --color-accent: #d0a500;
    --color-accent-100: oklch(90% 0.1 85);
    --color-accent-300: oklch(80% 0.14 85);
    --color-accent-500: var(--color-accent);

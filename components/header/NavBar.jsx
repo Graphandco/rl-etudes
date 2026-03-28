@@ -24,14 +24,14 @@ export default function NavBar({ links = [] }) {
 
    return (
       <>
-         <nav className="wrapper py-2 flex justify-between items-center">
+         <nav className="wrapper bg-white py-2 flex justify-between items-center">
             <Link href="/">
                <Image
-                  src="/logo.webp"
+                  src="/logo_rle.webp"
                   alt="Logo"
-                  width={598}
-                  height={247}
-                  className="w-30 h-auto"
+                  width={800}
+                  height={155}
+                  className="w-48 h-auto"
                />
             </Link>
 

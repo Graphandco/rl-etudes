@@ -142,11 +142,11 @@ export default function MobileMenu({ links, isOpen, onClose }) {
                   <div className="p-6 border-t border-neutral-200">
                      <Link href="/" onClick={onClose}>
                         <Image
-                           src="/logo.webp"
+                           src="/logo_rle.webp"
                            alt="Logo"
-                           width={598}
-                           height={247}
-                           className="w-32 h-auto mx-auto"
+                           width={800}
+                           height={155}
+                           className="w-48 h-auto mx-auto"
                         />
                      </Link>
                   </div>
