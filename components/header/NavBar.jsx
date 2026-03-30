@@ -15,7 +15,7 @@ export default function NavBar({ links = [] }) {
       { href: "/", label: "Accueil" },
       { href: "/presentation", label: "Présentation" },
       { href: "/bureau-detudes", label: "Bureau d'études" },
-      { href: "/topographie", label: "Topographie" },
+      { href: "/topographie", label: "Topographies" },
       { href: "/projets", label: "Projets" },
       { href: "/contact", label: "Contact" },
    ];
