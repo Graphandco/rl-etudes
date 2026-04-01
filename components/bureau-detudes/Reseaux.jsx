@@ -6,11 +6,6 @@ export default function Reseaux({ reseaux }) {
       <section id="reseaux" className="py-10 md:py-20 relative">
          <YellowShape bottom right className="z-10" />
          <div className="wrapper">
-            <h2 className="title-h2 mb-5">{reseaux.title}</h2>
-            <p
-               dangerouslySetInnerHTML={{ __html: reseaux.description }}
-               className="max-w-3xl prose mb-10 lg:mb-16"
-            />
             <div className="grid grid-cols-1 md:grid-cols-[2fr_3fr] gap-10 lg:gap-16 items-center">
                <AppearFromSide left>
                   <Image
@@ -48,6 +43,12 @@ export default function Reseaux({ reseaux }) {
                   </div>
                </div>
             </div>
+            <h2 className="title-h2 mt-10 lg:mt-16 mb-5">{reseaux.title}</h2>
+
+            <p
+               dangerouslySetInnerHTML={{ __html: reseaux.description }}
+               className="max-w-3xl prose mt-5"
+            />
          </div>
       </section>
    );

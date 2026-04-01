@@ -17,7 +17,7 @@ function normalizeImage(item) {
    return null;
 }
 
-function QuinconceImageGallery({ images, title, className }) {
+export function QuinconceImageGallery({ images, title, className }) {
    const normalized = images.map(normalizeImage).filter(Boolean);
    const imageCount = normalized.length;
 
