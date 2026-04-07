@@ -25,7 +25,7 @@ export function QuinconceImageGallery({ images, title, className }) {
       return (
          <div
             className={cn(
-               "w-full md:w-3/5 aspect-video rounded-lg bg-neutral-200 flex items-center justify-center text-neutral-500 shrink-0",
+               "flex w-full shrink-0 items-center justify-center rounded-lg bg-neutral-200 py-10 text-neutral-500 md:w-3/5",
                className,
             )}
          >
@@ -37,13 +37,21 @@ export function QuinconceImageGallery({ images, title, className }) {
    if (imageCount === 1) {
       const img = normalized[0];
       return (
-         <Image
-            src={img.url}
-            alt={title}
-            width={img.width}
-            height={img.height}
-            className={cn("w-full md:w-3/5 h-auto rounded-lg", className)}
-         />
+         <div
+            className={cn(
+               "w-full shrink-0 overflow-hidden rounded-lg md:w-3/5",
+               className,
+            )}
+         >
+            <Image
+               src={img.url}
+               alt={title}
+               width={img.width || 1200}
+               height={img.height || 800}
+               sizes="(max-width: 768px) 100vw, 60vw"
+               className="h-auto w-full rounded-lg"
+            />
+         </div>
       );
    }
 
@@ -111,72 +119,77 @@ function QuinconceCarousel({ images, title, className }) {
 
    const currentImg = images[index];
 
+   const w = currentImg.width || 1200;
+   const h = currentImg.height || 800;
+
    return (
       <div
          className={cn(
-            "relative w-full md:w-3/5 overflow-hidden rounded-lg",
+            "relative w-full overflow-hidden rounded-lg md:w-3/5",
             className,
          )}
          onMouseEnter={() => setIsPaused(true)}
          onMouseLeave={() => setIsPaused(false)}
       >
-         <div className="relative aspect-video">
-            <AnimatePresence initial={false} custom={direction}>
-               <motion.div
-                  key={index}
-                  custom={direction}
-                  variants={variants}
-                  initial="enter"
-                  animate="center"
-                  exit="exit"
-                  transition={{
-                     duration: 0.35,
-                     ease: "easeInOut",
-                  }}
-                  className="absolute inset-0"
-               >
-                  <Image
-                     src={currentImg.url}
-                     alt={`${title} - ${index + 1}`}
-                     width={currentImg.width}
-                     height={currentImg.height}
-                     className="w-full h-full object-cover rounded-lg"
-                  />
-               </motion.div>
-            </AnimatePresence>
-
-            {AUTO_SCROLL && !isPaused && (
-               <motion.div
-                  key={progressKey}
-                  initial={{ width: 0 }}
-                  animate={{ width: "100%" }}
-                  transition={{
-                     duration: SCROLL_INTERVAL / 1000,
-                     ease: "linear",
-                  }}
-                  className="absolute bottom-0 left-0 h-1 bg-accent rounded-b-lg"
+         <AnimatePresence initial={false} custom={direction} mode="wait">
+            <motion.div
+               key={index}
+               custom={direction}
+               variants={variants}
+               initial="enter"
+               animate="center"
+               exit="exit"
+               transition={{
+                  duration: 0.35,
+                  ease: "easeInOut",
+               }}
+               className="w-full"
+            >
+               <Image
+                  src={currentImg.url}
+                  alt={`${title} - ${index + 1}`}
+                  width={w}
+                  height={h}
+                  sizes="(max-width: 768px) 100vw, 60vw"
+                  className="h-auto w-full rounded-lg"
+                  priority={index === 0}
                />
-            )}
-         </div>
+            </motion.div>
+         </AnimatePresence>
 
-         <div className="absolute inset-0 flex items-center justify-between px-4 pointer-events-none">
+         {AUTO_SCROLL && !isPaused && (
+            <motion.div
+               key={progressKey}
+               initial={{ width: 0 }}
+               animate={{ width: "100%" }}
+               transition={{
+                  duration: SCROLL_INTERVAL / 1000,
+                  ease: "linear",
+               }}
+               className="absolute bottom-0 left-0 z-10 h-1 w-full bg-accent"
+            />
+         )}
+
+         <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-between px-4">
             <button
+               type="button"
                onClick={() => paginate(-1)}
-               className="pointer-events-auto text-white bg-accent bg-opacity-70 hover:bg-opacity-100 p-2 rounded-full transition"
+               className="pointer-events-auto rounded-full bg-accent/70 p-2 text-white transition hover:bg-accent"
                aria-label="Image précédente"
             >
                <ArrowLeft size={24} />
             </button>
             <button
+               type="button"
                onClick={() => paginate(1)}
-               className="pointer-events-auto text-white bg-accent bg-opacity-70 hover:bg-opacity-100 p-2 rounded-full transition"
+               className="pointer-events-auto rounded-full bg-accent/70 p-2 text-white transition hover:bg-accent"
                aria-label="Image suivante"
             >
                <ArrowRight size={24} />
             </button>
          </div>
 
-         <div className="absolute bottom-2 right-4 text-white text-sm bg-accent/70 px-2 py-1 rounded">
+         <div className="absolute bottom-2 right-4 z-20 rounded bg-accent/70 px-2 py-1 text-sm text-white">
             {index + 1} / {imageCount}
          </div>
       </div>
@@ -198,7 +211,7 @@ export default function Quinconce({
       <AppearFromSide left={left} right={right}>
          <section
             className={cn(
-               "wrapper my-10 md:my-20 flex flex-col md:items-end gap-10 overflow-hidden",
+               "wrapper my-10 md:my-20 flex flex-col gap-10 overflow-hidden md:items-start",
                isLeft ? "md:flex-row" : "md:flex-row-reverse",
                className,
             )}

@@ -42,10 +42,10 @@ export default function Hero({
                duration: 0.8,
                ease: "power5.inOut",
                delay: 0.3,
-            }
+            },
          );
       },
-      { scope: imageRef }
+      { scope: imageRef },
    );
 
    return (
@@ -53,13 +53,13 @@ export default function Hero({
          id="hero"
          className={cn(
             "relative grid grid-cols-1 md:grid-cols-[3fr_2fr] bg-neutral-100 before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-[url(/hero/bg-topo.webp)] before:bg-cover before:bg-center before:bg-no-repeat before:opacity-5",
-            className
+            className,
          )}
          style={{ minHeight: heroHeight }}
          {...props}
       >
          <div
-            className="hero-mobile-bg p-[5vw] flex flex-col justify-center items-baseline relative"
+            className="hero-mobile-bg px-[5vw] py-[3vw] flex flex-col justify-center items-baseline relative"
             style={{
                "--hero-image": `url(${url})`,
             }}
