@@ -25,7 +25,7 @@ export function QuinconceImageGallery({ images, title, className }) {
       return (
          <div
             className={cn(
-               "flex w-full shrink-0 items-center justify-center rounded-lg bg-neutral-200 py-10 text-neutral-500 md:w-3/5",
+               "flex w-full min-w-0 max-w-full shrink-0 items-center justify-center rounded-lg bg-neutral-200 py-10 text-neutral-500 md:w-3/5",
                className,
             )}
          >
@@ -39,7 +39,7 @@ export function QuinconceImageGallery({ images, title, className }) {
       return (
          <div
             className={cn(
-               "w-full shrink-0 overflow-hidden rounded-lg md:w-3/5",
+               "w-full min-w-0 max-w-full shrink-0 overflow-hidden rounded-lg md:w-3/5",
                className,
             )}
          >
@@ -48,8 +48,8 @@ export function QuinconceImageGallery({ images, title, className }) {
                alt={title}
                width={img.width || 1200}
                height={img.height || 800}
-               sizes="(max-width: 768px) 100vw, 60vw"
-               className="h-auto w-full rounded-lg"
+               sizes="(max-width: 767px) 100vw, 60vw"
+               className="h-auto w-full max-w-full rounded-lg"
             />
          </div>
       );
@@ -125,11 +125,11 @@ function QuinconceCarousel({ images, title, className }) {
    return (
       <div
          className={cn(
-            "relative w-full overflow-hidden rounded-lg md:w-3/5",
+            "relative w-full min-w-0 max-w-full overflow-x-clip overflow-y-visible rounded-lg md:w-3/5 md:overflow-hidden",
             className,
          )}
-         onMouseEnter={() => setIsPaused(true)}
-         onMouseLeave={() => setIsPaused(false)}
+         onPointerEnter={() => setIsPaused(true)}
+         onPointerLeave={() => setIsPaused(false)}
       >
          <AnimatePresence initial={false} custom={direction} mode="wait">
             <motion.div
@@ -150,9 +150,9 @@ function QuinconceCarousel({ images, title, className }) {
                   alt={`${title} - ${index + 1}`}
                   width={w}
                   height={h}
-                  sizes="(max-width: 768px) 100vw, 60vw"
-                  className="h-auto w-full rounded-lg"
-                  priority={index === 0}
+               sizes="(max-width: 767px) 100vw, 60vw"
+               className="h-auto w-full max-w-full rounded-lg"
+               priority={index === 0}
                />
             </motion.div>
          </AnimatePresence>
@@ -211,7 +211,7 @@ export default function Quinconce({
       <AppearFromSide left={left} right={right}>
          <section
             className={cn(
-               "wrapper my-10 md:my-20 flex flex-col gap-10 overflow-hidden md:items-start",
+               "wrapper my-10 md:my-20 flex flex-col gap-10 md:items-start md:overflow-hidden",
                isLeft ? "md:flex-row" : "md:flex-row-reverse",
                className,
             )}
@@ -220,9 +220,9 @@ export default function Quinconce({
             <QuinconceImageGallery
                images={images}
                title={title}
-               className="shrink-0"
+               className="w-full min-w-0 shrink-0 max-md:max-w-full"
             />
-            <div className="space-y-4 w-full md:w-2/5">
+            <div className="min-w-0 w-full space-y-4 md:w-2/5">
                <h2 className="title-h2">{title}</h2>
                <div
                   dangerouslySetInnerHTML={{ __html: content }}
