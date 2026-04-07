@@ -24,7 +24,7 @@ export default function HomeHero({ pageData }) {
          >
             <Link
                href="/bureau-detudes"
-               className="group flex flex-col items-center justify-between gap-2 bg-white rounded-xl shadow-md text-center h-full"
+               className="group flex flex-col items-center justify-between gap-2 bg-white rounded-xl shadow-md text-center h-full overflow-hidden"
             >
                <Image
                   src={hero.be_image.sizes.large}
@@ -43,7 +43,7 @@ export default function HomeHero({ pageData }) {
             </Link>
             <Link
                href="/topographie"
-               className="group flex flex-col items-center justify-between gap-2 bg-white rounded-xl shadow-md text-center h-full"
+               className="group flex flex-col items-center justify-between gap-2 bg-white rounded-xl shadow-md text-center h-full overflow-hidden"
             >
                <Image
                   src={hero.topo_image.sizes.large}

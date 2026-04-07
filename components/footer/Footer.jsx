@@ -4,14 +4,21 @@ export default function Footer({}) {
    return (
       <footer className="bg-primary text-white isolate sticky bottom-0 before:content-[''] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-[url(/hero/bg-topo.webp)] before:bg-cover before:bg-center before:bg-no-repeat before:-z-10 before:opacity-40">
          <div className="wrapper pt-5 pb-3 sm:pt-8 md:pt-12">
-            <div className="grid sm:grid-cols-3 gap-4 mb-6">
+            <div className="grid sm:grid-cols-[1fr_2fr_2fr] gap-4 mb-6">
                <div className="space-y-1">
-                  <Image
+                  {/* <Image
                      src="/logo_rle.webp"
                      alt="RL Etudes"
                      width={800}
                      height={155}
                      className="w-48 h-auto"
+                  /> */}
+                  <Image
+                     src="/ccta.webp"
+                     alt="CCTA"
+                     width={400}
+                     height={400}
+                     className="w-32 h-auto"
                   />
                </div>
                <div className="md:space-y-2 border-l border-accent pl-4">
