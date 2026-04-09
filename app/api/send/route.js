@@ -44,7 +44,7 @@ export async function POST(req) {
       if (privacy !== true) {
          return Response.json(
             { error: "Vous devez accepter la politique de confidentialité" },
-            { status: 400 }
+            { status: 400 },
          );
       }
 
@@ -55,10 +55,9 @@ export async function POST(req) {
       const sanitizedMessage = message.trim().slice(0, 5000);
 
       const { data, error } = await resend.emails.send({
-         from: "Site RL Études <site-rl-etudes@graphandco.net>",
-         to: ["contact@graphandco.com"],
-         subject:
-            "Nouveau message depuis le formulaire de contact du site RL Études",
+         from: "Site RL Études <site-rletudes@graphandco.net>",
+         to: ["contact@rletudes.fr"],
+         subject: "Nouveau message depuis le site RL Études",
          react: EmailTemplate({
             name: sanitizedName,
             email: sanitizedEmail,
@@ -78,7 +77,7 @@ export async function POST(req) {
       console.error("Erreur serveur :", err);
       return Response.json(
          { error: "Erreur interne du serveur" },
-         { status: 500 }
+         { status: 500 },
       );
    }
 }
