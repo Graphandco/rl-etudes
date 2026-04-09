@@ -38,5 +38,5 @@ jobs:
                  NEXT_PUBLIC_WP_GRAPHQL=${{ vars.NEXT_PUBLIC_WP_GRAPHQL }}
                  NEXT_PUBLIC_WP_REST=${{ vars.NEXT_PUBLIC_WP_REST }}
                  NEXT_PUBLIC_MATOMO_URL=${{ vars.NEXT_PUBLIC_MATOMO_URL }}
+                 NEXT_PUBLIC_MATOMO_SITE_ID=${{ vars.NEXT_PUBLIC_MATOMO_SITE_ID }}
                  REVALIDATE_TIME=${{ vars.REVALIDATE_TIME }}
-                 MATOMO_SITE_ID=${{ vars.MATOMO_SITE_ID }}
