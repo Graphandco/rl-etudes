@@ -7,6 +7,8 @@ WORKDIR /app
 ARG NEXT_PUBLIC_WP_GRAPHQL
 ARG NEXT_PUBLIC_WP_REST
 ARG REVALIDATE_TIME
+ARG NEXT_PUBLIC_MATOMO_URL
+ARG MATOMO_SITE_ID
 
 # Convertir les ARG en ENV pour qu'elles soient disponibles au build Next.js
 ENV NEXT_PUBLIC_WP_GRAPHQL=$NEXT_PUBLIC_WP_GRAPHQL
@@ -17,7 +19,7 @@ ENV REVALIDATE_TIME=$REVALIDATE_TIME
 
 # Copier uniquement les fichiers de dépendances d'abord (cache Docker)
 COPY package*.json ./
-RUN npm ci --only=production=false
+RUN npm ci
 
 # Copier le reste du code source
 COPY . .
