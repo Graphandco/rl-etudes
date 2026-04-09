@@ -3,6 +3,9 @@ import "./globals.css";
 import { ViewTransitions } from "next-view-transitions";
 import HeaderWrapper from "@/components/header/HeaderWrapper";
 import Footer from "@/components/footer/Footer";
+import MatomoAnalytics from "@/components/MatomoAnalytics";
+import { Suspense } from "react";
+
 const notoSans = Noto_Sans({
    variable: "--font-noto-sans",
    subsets: ["latin"],
@@ -30,6 +33,9 @@ export default function RootLayout({ children }) {
                <main style={{ viewTransitionName: "main" }}>{children}</main>
                <Footer style={{ viewTransitionName: "footer" }} />
             </ViewTransitions>
+            <Suspense fallback={null}>
+               <MatomoAnalytics />
+            </Suspense>
          </body>
       </html>
    );
