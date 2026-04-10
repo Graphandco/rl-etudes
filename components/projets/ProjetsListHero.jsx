@@ -7,6 +7,10 @@ export default function ProjetsListHero({ pageData }) {
             <h1 className="title-h1 font-title font-bold text-primary mb-5">
                {pageData.title}
             </h1>
+            <div
+               className="mt-2 mb-5"
+               dangerouslySetInnerHTML={{ __html: pageData.content }}
+            />
          </BlockAppear>
       </Hero>
    );

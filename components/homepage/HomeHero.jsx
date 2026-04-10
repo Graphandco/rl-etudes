@@ -47,7 +47,7 @@ export default function HomeHero({ pageData }) {
             >
                <Image
                   src={hero.topo_image.sizes.large}
-                  alt="Bureau d'Études"
+                  alt="Topographie"
                   width={hero.topo_image.sizes["large-width"]}
                   height={hero.topo_image.sizes["large-height"]}
                   className="w-full h-auto aspect-square transition-transform duration-300 group-hover:scale-105 rounded-t-xl"
