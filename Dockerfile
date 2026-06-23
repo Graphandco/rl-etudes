@@ -1,5 +1,5 @@
 # Build stage
-FROM node:20-alpine AS builder
+FROM node:26-alpine AS builder
 
 WORKDIR /app
 
@@ -28,7 +28,7 @@ COPY . .
 RUN npm run build
 
 # Runtime stage
-FROM node:20-alpine
+FROM node:26-alpine
 
 # Créer un utilisateur et un groupe non-root
 RUN addgroup -S nodejs && adduser -S nextjs -G nodejs
