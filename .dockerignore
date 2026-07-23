@@ -1,9 +1,18 @@
+# Dépendances locales et logs
 node_modules
 .next
-npm-debug.log
-yarn-error.log
-.env
-.env.*
-.DS_Store
+npm-debug.log*
+
+# Fichiers de dev Docker
+docker-compose.override.yml
+Dockerfile.dev
+
+# Git
 .git
+.gitignore
+.github
+
+# Divers
+.DS_Store
+.env*
 README.md

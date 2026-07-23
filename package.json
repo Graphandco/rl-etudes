@@ -1,6 +1,6 @@
 {
    "name": "rl-etudes",
-   "version": "0.1.0",
+   "version": "1.0.0",
    "private": true,
    "engines": {
       "node": ">=26.0.0"
@@ -8,7 +8,11 @@
    "scripts": {
       "dev": "next dev",
       "build": "next build",
-      "start": "next start"
+      "start": "next start",
+      "dev:docker": "concurrently -k \"PORT=3007 node --watch server.js\" \"npx wait-on -t 10000 http://localhost:3007 && npx browser-sync start -c bs-config.docker.js\"",
+      "docker:build": "docker compose -f docker-compose.yml build",
+      "docker:push": "docker compose -f docker-compose.yml push",
+      "docker:deploy": "docker compose -f docker-compose.yml build && docker compose -f docker-compose.yml push"
    },
    "dependencies": {
       "@gsap/react": "^2.1.2",

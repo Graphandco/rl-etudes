@@ -1,14 +1,20 @@
 services:
    app:
+      platform: linux/amd64
       container_name: rl-etudes
-      # build:
-      #    context: .
-      #    dockerfile: Dockerfile
-      #    args:
-      #       NEXT_PUBLIC_WP_GRAPHQL: ${NEXT_PUBLIC_WP_GRAPHQL}
-      #       NEXT_PUBLIC_WP_REST: ${NEXT_PUBLIC_WP_REST}
-      #       REVALIDATE_TIME: ${REVALIDATE_TIME:-300}
-      image: ghcr.io/graphandco/rl-etudes:latest
+      image: dockerhub.graphandco.com/rl-etudes:latest
+      pull_policy: always
+      build:
+         context: .
+         dockerfile: Dockerfile
+         tags:
+            - dockerhub.graphandco.com/rl-etudes:1.0.0
+            - dockerhub.graphandco.com/rl-etudes:latest
+         args:
+            NEXT_PUBLIC_WP_GRAPHQL: ${NEXT_PUBLIC_WP_GRAPHQL}
+            NEXT_PUBLIC_WP_REST: ${NEXT_PUBLIC_WP_REST}
+            NEXT_PUBLIC_MATOMO_URL: ${NEXT_PUBLIC_MATOMO_URL}
+            NEXT_PUBLIC_MATOMO_SITE_ID: ${NEXT_PUBLIC_MATOMO_SITE_ID}
       restart: unless-stopped
       env_file:
          - .env
