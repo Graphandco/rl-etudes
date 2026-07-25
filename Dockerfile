@@ -22,34 +22,27 @@ RUN npm ci
 # Copier le reste du code source
 COPY . .
 
-# Build Next.js
+# Build Next.js (génère .next/standalone)
 RUN npm run build
 
-# Runtime stage
-FROM node:26-alpine
+# Runtime stage — image minimale via output standalone
+FROM node:26-alpine AS runner
 
-# Créer un utilisateur et un groupe non-root
 RUN addgroup -S nodejs && adduser -S nextjs -G nodejs
 
 WORKDIR /app
-
-# Copier uniquement les fichiers nécessaires depuis le builder
-COPY --from=builder /app/package*.json ./
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/next.config.* ./
 
 ENV NODE_ENV=production
 ENV PORT=3007
 ENV HOSTNAME=0.0.0.0
 
-# Donner les droits au user non-root
-RUN chown -R nextjs:nodejs /app
+# Assets publics + sortie standalone (deps tracées uniquement)
+COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-# Basculer sur l'utilisateur non-root
 USER nextjs
 
 EXPOSE 3007
 
-CMD ["npm", "run", "start"]
+CMD ["node", "server.js"]
